@@ -17,7 +17,7 @@ const formField = {
   workSummary: "",
 };
 
-function Experience() {
+function Experience({ enableNext }) {
   const [experienceList, setExperienceList] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -26,6 +26,7 @@ function Experience() {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
   useEffect(() => {
+    enableNext(false);
     if (resumeInfo?.experience.length > 0) {
       setExperienceList(resumeInfo.experience);
     } else {
@@ -34,6 +35,7 @@ function Experience() {
   }, []);
 
   const handleChange = (event, index) => {
+    enableNext(false);
     const newEntries = experienceList.slice();
     const { name, value } = event.target;
     newEntries[index][name] = value;
@@ -56,7 +58,7 @@ function Experience() {
 
   useEffect(() => {
     setResumeInfo({ ...resumeInfo, experience: experienceList });
-    console.log(experienceList);
+    // console.log(experienceList);
   }, [experienceList]);
 
   const onSave = () => {
@@ -66,22 +68,25 @@ function Experience() {
         experience: experienceList.map(({ id, ...rest }) => rest),
       },
     };
-    console.log("data: " + JSON.stringify(data, null, 2));
+    // console.log("data: " + JSON.stringify(data, null, 2));
 
-    console.log(experienceList);
+    // console.log(experienceList);
 
-    GlobalApi.updateUserResume(params?.resumeId, data).then(
-      (res) => {
+    GlobalApi.updateUserResume(params?.resumeId, data)
+      .then((res) => {
         console.log("saved :", res);
         setLoading(false);
-        toast.success("Details updated !");
-      },
-      (error) => {
+        toast.success("Experience details saved successfully.", {
+          duration: 2000,
+        });
+        enableNext(true);
+      })
+      .catch((error) => {
         console.error("Failed to save experience", error);
         toast.error("Failed to save experience");
         setLoading(false);
-      }
-    );
+        enableNext(true);
+      });
   };
 
   return (

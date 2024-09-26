@@ -15,7 +15,7 @@ const formField = {
   links: [{ placeholder: "", link: "" }],
 };
 
-export default function Project() {
+export default function Projects({ enableNext }) {
   const [projectList, setProjectList] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -24,6 +24,7 @@ export default function Project() {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
   useEffect(() => {
+    enableNext(false);
     if (resumeInfo?.projects.length > 0) {
       setProjectList(resumeInfo.projects);
     } else {
@@ -32,6 +33,7 @@ export default function Project() {
   }, []);
 
   const handleChange = (event, index, linkIndex = null) => {
+    enableNext(false);
     const newEntries = projectList.slice();
     const { name, value } = event.target;
     if (linkIndex !== null) {
@@ -75,6 +77,7 @@ export default function Project() {
 
   const onSave = () => {
     setLoading(true);
+    enableNext(true);
     const data = {
       data: {
         projects: projectList.map(({ id, ...rest }) => rest),
@@ -82,18 +85,19 @@ export default function Project() {
     };
     console.log("data: " + JSON.stringify(data, null, 2));
 
-    GlobalApi.updateUserResume(params?.resumeId, data).then(
-      (res) => {
+    GlobalApi.updateUserResume(params?.resumeId, data)
+      .then((res) => {
         console.log("saved :", res);
         setLoading(false);
-        toast.success("Details updated !");
-      },
-      (error) => {
+        toast.success("Projects details updated successfully", {
+          duration: 2000,
+        });
+      })
+      .catch((error) => {
         console.error("Failed to save projects", error);
         toast.error("Failed to save projects");
         setLoading(false);
-      }
-    );
+      });
   };
 
   return (

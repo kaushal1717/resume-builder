@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import GlobalApi from "@/service/GlobalApi";
 import { toast } from "sonner";
 
-export default function Skills() {
+export default function Skills({ enableNext }) {
   const [skillList, setSkillList] = useState([
     {
       skillType: "",
@@ -54,7 +54,7 @@ export default function Skills() {
       .then((res) => {
         console.log("response from Strapi:", res);
         setLoading(false);
-        toast.success("Saved skill details");
+        toast.success("Saved skill details", { duration: 2000 });
       })
       .catch((err) => {
         console.error("error occured while saving skill details", err);
@@ -73,6 +73,7 @@ export default function Skills() {
   }, [skillList]);
 
   useEffect(() => {
+    enableNext(false);
     // Initialize skillList with the data from resumeInfo
     if (resumeInfo?.skills) {
       setSkillList(resumeInfo.skills);

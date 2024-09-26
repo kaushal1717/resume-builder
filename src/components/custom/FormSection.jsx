@@ -11,9 +11,10 @@ import ViewResume from "@/Pages/ViewResume";
 import ThemeColor from "./ThemeColor";
 import ProjectForm from "./Form/Projects";
 import Project from "./Form/Projects";
+import Projects from "./Form/Projects";
 
 function FormSection() {
-  const [activeFormIndex, setActiveFormIndex] = useState(4);
+  const [activeFormIndex, setActiveFormIndex] = useState(1);
   const [enableNext, setEnableNext] = useState(false);
   const params = useParams();
   return (
@@ -60,22 +61,28 @@ function FormSection() {
           }}
         />
       )}
-      {activeFormIndex == 2 && (
+      {activeFormIndex == 2 && <Education />}
+      {activeFormIndex == 3 && (
         <Summary
           enableNext={(val) => {
             setEnableNext(val);
           }}
         />
       )}
-      {activeFormIndex == 3 && (
+      {activeFormIndex == 4 && (
         <Experience
           enableNext={(val) => {
             setEnableNext(val);
           }}
         />
       )}
-      {activeFormIndex == 4 && <Project />}
-      {activeFormIndex == 5 && <Education />}
+      {activeFormIndex == 5 && (
+        <Projects
+          enableNext={(val) => {
+            setEnableNext(val);
+          }}
+        />
+      )}
       {activeFormIndex == 6 && <Skills />}
       {activeFormIndex == 7 && (
         <Navigate to={`/my-resume/${params.resumeId}/view`} />

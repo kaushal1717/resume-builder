@@ -16,8 +16,8 @@ function PreviewSection() {
         style={{ borderColor: resumeInfo?.themeColor }}
       >
         <PersonalDetailsPreview resumeInfo={resumeInfo} />
-        <EducationPreview resumeInfo={resumeInfo} />
         <SummarySection resumeInfo={resumeInfo} />
+        <EducationPreview resumeInfo={resumeInfo} />
         <ExperiencePreview resumeInfo={resumeInfo} />
         <ProjectsPreview resumeInfo={resumeInfo} />
         <SkillPreview resumeInfo={resumeInfo} />

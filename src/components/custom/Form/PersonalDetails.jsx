@@ -39,11 +39,11 @@ function PersonalDetails({ enableNext }) {
     newSocialLinks[index][name] = value;
     setFormData({
       ...formData,
-      socialLinks: newSocialLinks,
+      socialLinks: newSocialLinks.map(({ id, ...rest }) => rest),
     });
     setResumeInfo({
       ...resumeInfo,
-      socialLinks: newSocialLinks,
+      socialLinks: newSocialLinks.map(({ id, ...rest }) => rest),
     });
   };
 

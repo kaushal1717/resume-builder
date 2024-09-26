@@ -67,7 +67,7 @@ function Education() {
       .then((res) => {
         console.log("response: " + res);
         setLoading(false);
-        toast.success("Saved education details");
+        toast.success("Saved education details", { duration: 2000 });
       })
       .catch((err) => {
         console.error("error occured while saving education details", err);
