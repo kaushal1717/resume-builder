@@ -85,8 +85,8 @@ function Education() {
 
   return (
     <div className='mt-3 p-5 shadow-lg shadow-gray-400 rounded-lg'>
-      <h2 className='text-xl font-bold'>Add your experience</h2>
-      <p className='font-bold text-sm'>Add relevant previous job experience</p>
+      <h2 className='text-xl font-bold'>Add your educational details</h2>
+      <p className='font-bold text-sm'>Add your educational details</p>
       <div>
         {educationList.map((item, index) => (
           <div key={index}>
@@ -115,7 +115,7 @@ function Education() {
                   defaultValue={item?.degree}
                 />
               </div>
-              <div className='col-span-2 text-xs'>
+              <div className='col-span-2 text-xs space-y-1'>
                 <label htmlFor='major'>Major in</label>
                 <Input
                   name='major'
@@ -153,7 +153,7 @@ function Education() {
                   defaultValue={item?.endDate}
                 />
               </div>
-              <div className='col-span-2 text-xs'>
+              <div className='col-span-2 text-xs space-y-1'>
                 <label htmlFor='description'>Description</label>
                 <Textarea
                   name='description'

@@ -84,16 +84,25 @@ function PersonalDetails({ enableNext }) {
   const onSave = (e) => {
     setLoading(true);
     e.preventDefault();
-    const formattedSocialLinks = formData.socialLinks.map((link) => ({
+
+    // Remove the 'id' field from each object in the 'socialLinks' array
+    const cleanedSocialLinks = formData.socialLinks.map(
+      ({ id, ...rest }) => rest
+    );
+
+    const formattedSocialLinks = cleanedSocialLinks.map((link) => ({
       ...link,
       link: formatLink(link.link),
     }));
+
     const data = {
       data: {
         ...formData,
         socialLinks: formattedSocialLinks,
       },
     };
+    console.log("sent data: ", data.data);
+
     GlobalApi.updateUserResume(params?.resumeId, data).then(
       (res) => {
         console.log(res);

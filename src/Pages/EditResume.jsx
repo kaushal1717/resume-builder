@@ -25,7 +25,7 @@ const EditResume = () => {
     GlobalApi.getResumeById(params.resumeId)
       .then((res) => {
         const response = res.data.data;
-        console.log("Data : ", response);
+        console.log("Data : ", response.jobTitle);
 
         // Check if the resume is newly created
         const isNew =

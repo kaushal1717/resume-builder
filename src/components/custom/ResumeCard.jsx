@@ -46,18 +46,18 @@ function ResumeCard({ resume, refreshData }) {
       });
   };
   return (
-    <div className='border border-gray-500 hover:scale-105 transition-all hover:shadow-lg rounded-lg h-[280px] bg-secondary'>
+    <div className='border border-accent hover:scale-105 transition-all hover:shadow-lg rounded-lg h-[280px] bg-white'>
       <Link to={"/dashboard/resume/" + resume.documentId + "/edit"}>
         <div className='p-14  flex items-center justify-center h-[250px] rounded-t-lg'>
-          <File />
+          <File className='text-accent' />
         </div>
       </Link>
       <div className='flex flex-row justify-between px-2'>
-        <h2 className>{resume.title}</h2>
+        <h2 className='text-accent'>{resume.title}</h2>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <span className='cursor-pointer'>
-              <MoreVertical className='h-4 w-4' />
+              <MoreVertical className='h-4 w-4 text-accent' />
             </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent>

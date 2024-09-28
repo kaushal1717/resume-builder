@@ -55,6 +55,7 @@ export default function Skills({ enableNext }) {
         console.log("response from Strapi:", res);
         setLoading(false);
         toast.success("Saved skill details", { duration: 2000 });
+        enableNext(true);
       })
       .catch((err) => {
         console.error("error occured while saving skill details", err);

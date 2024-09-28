@@ -83,7 +83,13 @@ function FormSection() {
           }}
         />
       )}
-      {activeFormIndex == 6 && <Skills />}
+      {activeFormIndex == 6 && (
+        <Skills
+          enableNext={(val) => {
+            setEnableNext(val);
+          }}
+        />
+      )}
       {activeFormIndex == 7 && (
         <Navigate to={`/my-resume/${params.resumeId}/view`} />
       )}

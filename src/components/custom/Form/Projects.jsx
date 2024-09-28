@@ -25,7 +25,7 @@ export default function Projects({ enableNext }) {
 
   useEffect(() => {
     enableNext(false);
-    if (resumeInfo?.projects.length > 0) {
+    if (resumeInfo?.projects && resumeInfo.projects.length > 0) {
       setProjectList(resumeInfo.projects);
     } else {
       setProjectList([formField]);
@@ -73,7 +73,7 @@ export default function Projects({ enableNext }) {
   useEffect(() => {
     setResumeInfo({ ...resumeInfo, projects: projectList });
     console.log(projectList);
-  }, [projectList]);
+  }, [projectList, setResumeInfo, resumeInfo]);
 
   const onSave = () => {
     setLoading(true);

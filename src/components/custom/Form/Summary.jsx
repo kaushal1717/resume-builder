@@ -3,7 +3,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import GlobalApi from "@/service/GlobalApi";
 import { Generator } from "@/service/GroqGen";
-import { Loader2 } from "lucide-react";
+import { Copy, CopyCheckIcon, Loader2 } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
@@ -14,6 +14,7 @@ function Summary({ enableNext }) {
   const [loading, setLoading] = useState(false);
   const [isRateLimited, setIsRateLimited] = useState();
   const [generatedSummary, setGeneratedSummary] = useState();
+  const [copied, setCopied] = useState(false);
   const params = useParams();
 
   const generateSummary = async () => {
@@ -112,20 +113,46 @@ function Summary({ enableNext }) {
             Note: Double check AI respose before adding it to resume
           </p>
         </form>
-      </div>
-      {generatedSummary && (
-        <div>
-          <h2 className='font-bold text-lg'>Suggestions</h2>
-          {generatedSummary.map((item, index) => (
-            <div key={index}>
-              <h2 className='font-bold my-1' key={index}>
-                {item.type}
-              </h2>
-              <p>{item.content}</p>
+        {generatedSummary && (
+          <div>
+            <h2 className='font-bold text-lg'>Suggestions</h2>
+            <div className='space-y-2'>
+              {generatedSummary.map((item, index) => (
+                <div className='flex border border-gray-500 p-2 rounded-lg'>
+                  <div key={index}>
+                    <div className='flex justify-between'>
+                      <h2 className='font-bold my-1' key={index}>
+                        {item.type}
+                      </h2>
+                    </div>
+                    <p>{item.content}</p>
+                  </div>
+                  <div className='mt-2'>
+                    {copied ? (
+                      <CopyCheckIcon size={15} />
+                    ) : (
+                      <Copy
+                        className='cursor-pointer'
+                        size={15}
+                        onClick={() => {
+                          navigator.clipboard.writeText(item.content);
+                          setCopied(true);
+                          toast.success("Summary copied successfully", {
+                            duration: 1000,
+                          });
+                          setTimeout(() => {
+                            setCopied(false);
+                          }, 5000);
+                        }}
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

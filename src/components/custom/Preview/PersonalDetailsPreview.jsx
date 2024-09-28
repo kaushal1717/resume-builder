@@ -7,6 +7,10 @@ function PreviewSection({ resumeInfo }) {
     }
     return link;
   };
+
+  // Debugging statement to check resumeInfo
+  console.log("Resume Info in PreviewSection:", resumeInfo);
+
   return (
     <div className='flex flex-col items-center'>
       <div className='text-center mb-4'>

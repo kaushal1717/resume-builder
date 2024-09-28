@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/dashboard",
+        path: "/",
         element: <DashBoard />,
       },
       {
@@ -22,10 +22,6 @@ const router = createBrowserRouter([
         element: <EditResume />,
       },
     ],
-  },
-  {
-    path: "/",
-    element: <Home />,
   },
   {
     path: "my-resume/:resumeId/view",
