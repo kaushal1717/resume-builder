@@ -2,7 +2,7 @@ import { default as axios } from "axios";
 
 const API_KEY = import.meta.env.VITE_STRAPI_API;
 const axiosClient = axios.create({
-  baseURL: "http://localhost:1337/api/",
+  baseURL: "https://careerai-cms.onrender.com/api/",
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${API_KEY}`,
