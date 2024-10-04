@@ -19,21 +19,21 @@ function FormSection() {
   const params = useParams();
   return (
     <div>
-      <div className='flex justify-between items-center'>
-        <div className='flex flex-row gap-2'>
-          <Link to={"/dashboard"}>
-            <Button size='sm'>
+      <div className="flex justify-between items-center">
+        <div className="flex flex-row gap-2">
+          <Link to={"/"}>
+            <Button size="sm">
               <ArrowLeftIcon />
             </Button>
           </Link>
           <ThemeColor />
         </div>
 
-        <div className='flex gap-2'>
+        <div className="flex gap-2">
           {activeFormIndex > 1 && (
             <Button
-              className='flex gap-2'
-              size='sm'
+              className="flex gap-2"
+              size="sm"
               onClick={() => {
                 setActiveFormIndex((prevIndex) => prevIndex - 1);
               }}
@@ -43,8 +43,8 @@ function FormSection() {
           )}
           <Button
             disabled={!enableNext}
-            className='flex gap-2'
-            size='sm'
+            className="flex gap-2"
+            size="sm"
             onClick={() => {
               setActiveFormIndex((prevIndex) => prevIndex + 1);
             }}
