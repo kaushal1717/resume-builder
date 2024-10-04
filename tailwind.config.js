@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        dot: 'url("/dots.svg")',
+      },
       colors: {
         border: {
           DEFAULT: "hsl(var(--border))",
