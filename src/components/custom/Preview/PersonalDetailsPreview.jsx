@@ -17,7 +17,7 @@ function PreviewSection({ resumeInfo }) {
         <h1 className='text-3xl font-bold'>
           {resumeInfo?.firstName} {resumeInfo?.lastName}
         </h1>
-        <p className='text-gray-500'>{resumeInfo?.jobTitle}</p>
+        <p className='text-gray-500 capitalize'>{resumeInfo?.jobTitle}</p>
       </div>
       <div className='flex justify-center items-center space-x-4'>
         <div className='flex-item'>{resumeInfo?.phone}</div>

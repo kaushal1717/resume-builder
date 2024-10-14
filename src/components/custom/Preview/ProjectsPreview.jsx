@@ -17,7 +17,7 @@ export default function ProjectsPreview({ resumeInfo }) {
         projectsObj.map((project, index) => (
           <div key={index}>
             <div className='flex justify-between items-center'>
-              <h2 className='text-sm font-bold'>{project?.title}</h2>
+              <h2 className='text-sm font-bold capitalize'>{project?.title}</h2>
               <div>
                 {project?.links?.map((link, linkIndex) => (
                   <span key={linkIndex}>

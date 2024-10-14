@@ -132,7 +132,7 @@ export default {
       skillNames: "NodeJS, NestJS, ExpressJS",
     },
     {
-      skillType: "Sof skills",
+      skillType: "Soft skills",
       skillNames: "Problem Solving, Critical thinking",
     },
   ],

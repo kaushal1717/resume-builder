@@ -105,7 +105,7 @@ function Summary({ enableNext }) {
             }}
           />
           <div className='mt-3 flex justify-end'>
-            <Button variant='outline' type='submit' disabled={loading}>
+            <Button type='submit' disabled={loading}>
               {loading ? <Loader2 className='animate-spin' /> : "Save"}
             </Button>
           </div>
@@ -128,7 +128,7 @@ function Summary({ enableNext }) {
                     <p>{item.content}</p>
                   </div>
                   <div className='mt-2'>
-                    {copied ? (
+                    {copied === index ? (
                       <CopyCheckIcon size={15} />
                     ) : (
                       <Copy
@@ -136,7 +136,7 @@ function Summary({ enableNext }) {
                         size={15}
                         onClick={() => {
                           navigator.clipboard.writeText(item.content);
-                          setCopied(true);
+                          setCopied(index);
                           toast.success("Summary copied successfully", {
                             duration: 1000,
                           });

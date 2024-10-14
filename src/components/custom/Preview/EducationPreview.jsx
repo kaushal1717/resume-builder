@@ -16,9 +16,14 @@ function EducationPreview({ resumeInfo }) {
       {eduObj.length > 0 ? (
         eduObj.map((education, index) => (
           <div key={index} className='my-5'>
-            <h2 className='text-sm font-bold'>{education.universityName}</h2>
+            <h2 className='text-sm font-bold capitalize'>
+              {education.universityName}
+            </h2>
             <h2 className='text-xs flex justify-between'>
-              {education?.degree} in {education?.major}
+              <div>
+                <span className='capitalize'>{education?.degree}</span> in{" "}
+                <span className='capitalize'>{education?.major}</span>
+              </div>
               <span>
                 <DateFormatter dateString={education?.startDate} /> -{" "}
                 <DateFormatter dateString={education?.endDate} />

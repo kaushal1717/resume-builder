@@ -18,7 +18,7 @@ function ExperiencePreview({ resumeInfo }) {
       {expObj.length > 0
         ? expObj.map((exp, index) => (
             <div key={index}>
-              <h2 className='text-sm font-bold'>{exp?.title}</h2>
+              <h2 className='text-sm font-bold capitalize'>{exp?.title}</h2>
               <h2 className='text-xs flex justify-between'>
                 {exp?.companyName}, {exp?.location}
                 <span>
