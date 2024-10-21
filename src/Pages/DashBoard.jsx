@@ -17,7 +17,7 @@ function DashBoard() {
       console.log(res);
       // Filter resumes based on the IDs stored in local storage
       const filteredResumes = res.data.data.filter((resume) =>
-        resumeIds.includes(resume.documentId)
+        resumeIds.includes(resume.documentId),
       );
       setResumeList(filteredResumes);
     });
@@ -34,6 +34,7 @@ function DashBoard() {
             Our <span className="font-bold">AI-powered</span> resume builder
             creates a personalized resume for you in minutes. <br />
           </p>
+
           <p className="text-gray-700 font-bold text-xl ">Start Building!!👇</p>
         </div>
         <img src={builder} width={250} height={250} alt="Resume Builder" />

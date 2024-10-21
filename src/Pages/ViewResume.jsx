@@ -3,8 +3,8 @@ import PreviewSection from "@/components/custom/PreviewSection";
 import { Button } from "@/components/ui/button";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import GlobalApi from "@/service/GlobalApi";
-import { Download, Share, Share2 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { Download, Share2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function ViewResume() {
@@ -24,16 +24,16 @@ function ViewResume() {
   };
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-      <div id='no-print'>
+      <div id="no-print">
         <Header />
-        <div className='mt-6 max-w-[820px] mx-auto'>
-          <h2 className='text-center text-2xl font-medium'>
+        <div className="mt-6 max-w-[820px] mx-auto">
+          <h2 className="text-center text-2xl font-medium">
             Congrats! Your resume is ready
           </h2>
-          <p className='text-center text-gray-400'>
+          <p className="text-center text-gray-400">
             Now you can download the resume or share it to your friends
           </p>
-          <div className=' gap-[10px] flex justify-end my-10'>
+          <div className=" gap-[10px] flex justify-end my-10">
             <Button onClick={handleDownload}>
               <Download />
             </Button>
@@ -43,7 +43,7 @@ function ViewResume() {
           </div>
         </div>
       </div>
-      <div id='print-area' className='max-w-[820px] mx-auto my-10 '>
+      <div id="print-area" className="max-w-[820px] mx-auto my-10 ">
         <PreviewSection />
       </div>
     </ResumeInfoContext.Provider>

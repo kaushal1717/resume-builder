@@ -1,12 +1,3 @@
-import React from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
@@ -29,7 +20,8 @@ export const Header = () => {
         >
           {[
             ["/", "Builder"],
-            ["http://localhost:3000/resume-parser", "Parser"],
+            ["https://career-ai-project.vercel.app/resume-parser", "Parser"],
+            ["https://career-ai-project.vercel.app/interview", "Interview"],
           ].map(([href, text]) => (
             <Link
               key={text}
