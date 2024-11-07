@@ -10,4 +10,4 @@ const logOkStatus = async () => {
 };
 
 // Log every 10 seconds (10 * 1000 milliseconds)
-setInterval(logOkStatus, 14 * 60 * 1000);
+setInterval(logOkStatus, 12 * 60 * 1000);
