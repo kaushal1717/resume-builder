@@ -5,7 +5,7 @@ const logOkStatus = async () => {
     const response = await api.getOkStatus();
     console.log("OK Status Response:", response.data);
   } catch (error) {
-    console.error("Error fetching OK status:", error);
+    console.error("Error fetching OK status:");
   }
 };
 
