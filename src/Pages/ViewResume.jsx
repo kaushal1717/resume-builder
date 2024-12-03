@@ -35,6 +35,8 @@ function ViewResume() {
     window.print();
   };
 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
       <div id='no-print'>
@@ -53,9 +55,7 @@ function ViewResume() {
             <RWebShare
               data={{
                 text: "This is my resume",
-                url: `${
-                  import.meta.env.VITE_BASE_URL
-                }/my-resume/${resumeId}/view`,
+                url: `${baseUrl}/my-resume/${resumeId}/view`,
                 title: "Careerai Resume Builder",
               }}
               onClick={() => console.log("shared successfully!")}
