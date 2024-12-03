@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/my-resume/:resume_id/view",
+      "destination": "index.html"
+    }
+  ]
+}

@@ -53,7 +53,7 @@ function ViewResume() {
             <RWebShare
               data={{
                 text: "This is my resume",
-                url: `https://careerai-resume-builder.vercel.app/my-resume/${resumeId}/view`,
+                url: `http://localhost:5173/my-resume/${resumeId}/view`,
                 title: "Careerai Resume Builder",
               }}
               onClick={() => console.log("shared successfully!")}

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "my-resume/:resumeId/view",
+    path: "/my-resume/:resumeId/view",
     element: <ViewResume />,
   },
 ]);
@@ -31,5 +31,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
