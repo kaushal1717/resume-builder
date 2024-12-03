@@ -62,14 +62,14 @@ const EditResume = () => {
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
       <div className="min-h-screen bg-gray-50">
         {/* Preview Toggle Button */}
-        <div className="fixed bottom-4 right-4 z-50">
+        <div className="fixed bottom-8 right-6 z-50">
           <Button
             onClick={() => setShowPreview(!showPreview)}
             variant="outline"
             size="icon"
-            className="rounded-full bg-white shadow-lg"
+            className="rounded-full bg-white shadow-lg w-14 h-14"
           >
-            {showPreview ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+            {showPreview ? <EyeOffIcon size={35} /> : <EyeIcon size={35} />}
           </Button>
         </div>
 
