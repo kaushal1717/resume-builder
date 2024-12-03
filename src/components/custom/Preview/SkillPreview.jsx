@@ -2,26 +2,31 @@ import React from "react";
 
 function SkillPreview({ resumeInfo }) {
   const skillsObject = resumeInfo?.skills;
-  console.log("Skills : ", skillsObject);
+
+  if (!skillsObject?.length) return null;
 
   return (
-    <div className='my-3'>
+    <div className="mt-4 md:mt-6">
       <h2
-        className='text-center font-bold text-sm mb-2'
+        className="font-bold text-sm md:text-base mb-2 text-center"
         style={{ color: resumeInfo?.themeColor }}
       >
         Skills
       </h2>
-      <hr style={{ borderColor: resumeInfo?.themeColor }} />
-      {skillsObject &&
-        skillsObject.map((skill, index) => (
-          <div key={index}>
-            <div>
-              <span className='text-xs font-bold'> {skill?.skillType} : </span>{" "}
-              <span className='text-xs'>{skill?.skillNames}</span>
-            </div>
+      <hr className="mb-3" style={{ borderColor: resumeInfo?.themeColor }} />
+      
+      <div className="space-y-2">
+        {skillsObject.map((skill, index) => (
+          <div key={index} className="flex flex-col md:flex-row gap-1 md:gap-2">
+            <span className="text-xs md:text-sm font-bold whitespace-nowrap">
+              {skill?.skillType}:
+            </span>
+            <span className="text-xs md:text-sm text-gray-700 flex-1">
+              {skill?.skillNames}
+            </span>
           </div>
         ))}
+      </div>
     </div>
   );
 }

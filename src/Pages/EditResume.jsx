@@ -5,12 +5,15 @@ import PreviewSection from "@/components/custom/PreviewSection";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import dummy from "@/data/dummy";
 import GlobalApi from "@/service/GlobalApi";
+import { Button } from "@/components/ui/button";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 const EditResume = () => {
   const params = useParams();
   const [resumeInfo, setResumeInfo] = useState(dummy);
   const [loading, setLoading] = useState(true);
   const [isNewResume, setIsNewResume] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     if (params.resumeId) {
@@ -57,13 +60,38 @@ const EditResume = () => {
 
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-      <div className='grid grid-cols-1 md:grid-cols-2 p-10 gap-10'>
-        <FormSection />
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <PreviewSection isNewResume={isNewResume} />
-        )}
+      <div className="min-h-screen bg-gray-50">
+        {/* Preview Toggle Button */}
+        <div className="fixed bottom-4 right-4 z-50">
+          <Button
+            onClick={() => setShowPreview(!showPreview)}
+            variant="outline"
+            size="icon"
+            className="rounded-full bg-white shadow-lg"
+          >
+            {showPreview ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
+          </Button>
+        </div>
+
+        <div className="container mx-auto px-4 py-6">
+          <div className="max-w-5xl mx-auto">
+            {/* Form Section */}
+            <div className={showPreview ? 'hidden' : 'block'}>
+              <FormSection />
+            </div>
+
+            {/* Preview Section */}
+            <div className={!showPreview ? 'hidden' : 'block'}>
+              {loading ? (
+                <div className="flex items-center justify-center h-96">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                </div>
+              ) : (
+                <PreviewSection isNewResume={isNewResume} />
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </ResumeInfoContext.Provider>
   );

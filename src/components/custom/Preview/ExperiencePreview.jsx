@@ -2,37 +2,49 @@ import React from "react";
 import DateFormatter from "../DateFormatter";
 
 function ExperiencePreview({ resumeInfo }) {
-  const str = "text-center";
-  const expObj = resumeInfo?.experience || []; // Safeguard against undefined
+  const expObj = resumeInfo?.experience || [];
 
   if (expObj.length === 0) return null;
+
   return (
-    <div className='my-3'>
+    <div className="mt-4 lg:mt-6">
       <h2
-        className={`${str} font-bold text-sm mb-2`}
+        className="font-bold text-sm lg:text-base mb-2 text-center"
         style={{ color: resumeInfo?.themeColor }}
       >
         Professional Experience
       </h2>
-      <hr style={{ borderColor: resumeInfo?.themeColor }} />
-      {expObj.length > 0
-        ? expObj.map((exp, index) => (
-            <div key={index}>
-              <h2 className='text-sm font-bold capitalize'>{exp?.title}</h2>
-              <h2 className='text-xs flex justify-between'>
-                {exp?.companyName}, {exp?.location}
-                <span>
-                  <DateFormatter dateString={exp?.startDate} /> -{" "}
-                  <DateFormatter dateString={exp?.endDate} />
-                </span>
-              </h2>
-              <div
-                dangerouslySetInnerHTML={{ __html: exp?.workSummary }}
-                className='text-xs my-2'
-              />
+      <hr className="mb-3" style={{ borderColor: resumeInfo?.themeColor }} />
+      
+      <div className="space-y-4">
+        {expObj.map((exp, index) => (
+          <div key={index} className="pb-2">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-baseline gap-1">
+              <h3 className="text-sm lg:text-base font-bold capitalize">
+                {exp?.title}
+              </h3>
+              <div className="text-xs lg:text-sm text-gray-600">
+                <DateFormatter dateString={exp?.startDate} /> -{" "}
+                <DateFormatter dateString={exp?.endDate} />
+              </div>
             </div>
-          ))
-        : null}
+            
+            <div className="text-xs lg:text-sm text-gray-600 mt-1">
+              {exp?.companyName}
+              {exp?.location && (
+                <span className="ml-1">
+                  • {exp.location}
+                </span>
+              )}
+            </div>
+            
+            <div
+              dangerouslySetInnerHTML={{ __html: exp?.workSummary }}
+              className="text-xs lg:text-sm mt-2 leading-relaxed"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

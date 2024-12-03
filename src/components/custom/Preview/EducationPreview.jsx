@@ -4,37 +4,48 @@ import DateFormatter from "../DateFormatter";
 function EducationPreview({ resumeInfo }) {
   const eduObj = resumeInfo?.education || [];
 
+  if (eduObj.length === 0) return null;
+
   return (
-    <div className='my-3'>
+    <div className="mt-4 md:mt-6">
       <h2
-        className='text-center font-bold text-sm mb-2'
+        className="font-bold text-sm md:text-base mb-2 text-center"
         style={{ color: resumeInfo?.themeColor }}
       >
         Education
       </h2>
-      <hr style={{ borderColor: resumeInfo?.themeColor }} />
-      {eduObj.length > 0 ? (
-        eduObj.map((education, index) => (
-          <div key={index} className='my-5'>
-            <h2 className='text-sm font-bold capitalize'>
-              {education.universityName}
-            </h2>
-            <h2 className='text-xs flex justify-between'>
-              <div>
-                <span className='capitalize'>{education?.degree}</span> in{" "}
-                <span className='capitalize'>{education?.major}</span>
-              </div>
-              <span>
+      <hr className="mb-3" style={{ borderColor: resumeInfo?.themeColor }} />
+      
+      <div className="space-y-4">
+        {eduObj.map((education, index) => (
+          <div key={index} className="pb-2">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
+              <h3 className="text-sm md:text-base font-bold capitalize">
+                {education.universityName}
+              </h3>
+              <div className="text-xs md:text-sm text-gray-600">
                 <DateFormatter dateString={education?.startDate} /> -{" "}
                 <DateFormatter dateString={education?.endDate} />
-              </span>
-            </h2>
-            <p className='text-xs my-2'>{education?.description}</p>
+              </div>
+            </div>
+            
+            <div className="text-xs md:text-sm text-gray-600 mt-1">
+              <span className="capitalize">{education?.degree}</span>
+              {education?.major && (
+                <span>
+                  {" "}in <span className="capitalize">{education.major}</span>
+                </span>
+              )}
+            </div>
+            
+            {education?.description && (
+              <p className="text-xs md:text-sm mt-2 leading-relaxed text-gray-700">
+                {education.description}
+              </p>
+            )}
           </div>
-        ))
-      ) : (
-        <p>No education details available.</p>
-      )}
+        ))}
+      </div>
     </div>
   );
 }

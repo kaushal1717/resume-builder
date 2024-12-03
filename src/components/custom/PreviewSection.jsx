@@ -8,22 +8,24 @@ import SkillPreview from "./Preview/SkillPreview";
 import ProjectsPreview from "./Preview/ProjectsPreview";
 
 function PreviewSection() {
-  // eslint-disable-next-line no-unused-vars
-  const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+  const { resumeInfo } = useContext(ResumeInfoContext);
+  
   return (
-    <>
+    <div className="bg-white rounded-lg overflow-hidden">
       <div
-        className='shadow-lg h-full p-5 border-t-[20px]'
+        className="h-full p-4 md:p-5 border-t-[20px] shadow-md md:shadow-lg"
         style={{ borderColor: resumeInfo?.themeColor }}
       >
-        <PersonalDetailsPreview resumeInfo={resumeInfo} />
-        <SummarySection resumeInfo={resumeInfo} />
-        <EducationPreview resumeInfo={resumeInfo} />
-        <ExperiencePreview resumeInfo={resumeInfo} />
-        <ProjectsPreview resumeInfo={resumeInfo} />
-        <SkillPreview resumeInfo={resumeInfo} />
+        <div className="max-w-[800px] mx-auto space-y-6">
+          <PersonalDetailsPreview resumeInfo={resumeInfo} />
+          <SummarySection resumeInfo={resumeInfo} />
+          <EducationPreview resumeInfo={resumeInfo} />
+          <ExperiencePreview resumeInfo={resumeInfo} />
+          <ProjectsPreview resumeInfo={resumeInfo} />
+          <SkillPreview resumeInfo={resumeInfo} />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
