@@ -8,6 +8,7 @@ import SkillPreview from "./Preview/SkillPreview";
 import ProjectsPreview from "./Preview/ProjectsPreview";
 
 function PreviewSection() {
+  // eslint-disable-next-line no-unused-vars
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   return (
     <>

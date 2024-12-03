@@ -11,11 +11,8 @@ import { RWebShare } from "react-web-share";
 
 function ViewResume() {
   const [resumeInfo, setResumeInfo] = useState();
-  const [recipientEmail, setRecipientEmail] = useState("");
-  const [senderEmail, setSenderEmail] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
   const { resumeId } = useParams();

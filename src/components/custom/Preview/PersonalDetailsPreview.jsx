@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 
 function PreviewSection({ resumeInfo }) {
   const formatLink = (link) => {
